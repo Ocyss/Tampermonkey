@@ -6,6 +6,8 @@
 // @description  Specially written practical gadgets
 // @description:zh-cn  专门编写实用小工具
 // @author       Ocyss
+// @source       https://github.com/Ocyss/Tampermonkey
+// @homepage     https://github.com/Ocyss
 // @match        *://*/*
 // @icon         https://cdn-icons-png.flaticon.com/512/949/949339.png
 // @run-at       document-start
