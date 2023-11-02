@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         力扣新版UI评论区
 // @namespace    Ocyss
-// @version      0.1
+// @version      0.2
 // @description  杀软,tm的会不会设计?
 // @author       Ocyss
 // @match        https://leetcode.cn/problems/*
@@ -67,14 +67,21 @@ class leetcode {
   main() {
     this.buildComment()
     this.buildTagBut()
+    this.additionalEventHandler()
   }
+  // 编译评论页面视图
   buildComment() {
+
     this.content = DOMApi.createElement("div", "flexlayout__tab", "", "", "left: 0px; top: 32px; width: 595px; height: 928.391px; position: absolute;display: none;")
-    this.content.appendChild(this.comment.querySelector(".overflow-hidden.transition-all"))
+    const overflowTransition = this.comment.querySelector(".overflow-hidden.transition-all")
+    overflowTransition.style.paddingBottom = "80px"
+    this.content.appendChild(overflowTransition)
     DOMApi.remove(".w-full.border.p-4.bg-fill-4.border-divider-4", this.content)
     this.layout.appendChild(this.content)
   }
+  // 编译评论标签按钮
   buildTagBut() {
+
     const commentBut = DOMApi.createElement("div", "flexlayout__tab_button flexlayout__tab_button_top flexlayout__tab_button--unselected", "", `
     <div class="flexlayout__tab_button_content">
     <div class="relative flex items-center gap-1 overflow-hidden text-xs capitalize" style="max-width: 150px;">
@@ -96,7 +103,7 @@ class leetcode {
       }
       this.content.style.width = pre.style.width;
     }
-    DOMApi.mousedown(commentBut, (e) => {
+    this.commentButEv = (e) => {
       if (!svg.classList.contains("rotate-180")) {
         this.comment.firstElementChild.click()
       }
@@ -114,7 +121,8 @@ class leetcode {
       })
       commentBut.classList.replace("flexlayout__tab_button--unselected", "flexlayout__tab_button--selected");
       this.content.style.display = ""
-    })
+    }
+    DOMApi.mousedown(commentBut, this.commentButEv)
 
 
     buts.forEach((but) => {
@@ -136,5 +144,18 @@ class leetcode {
     document.addEventListener("mousemove", function (event) {
       syncWidth()
     });
+    setTimeout(() => {
+      commentBut.innerHTML = commentBut.innerHTML.replaceAll("评论", this.comment.firstElementChild.firstElementChild.textContent)
+    }, 2000)
+  }
+  // 进行额外事件绑定
+  additionalEventHandler() {
+    // 题目描述页评论按钮重定向
+    const commentBug = document.querySelector("svg.fa-comment").closest("button")
+    commentBug.onclick = () => {
+      this.commentButEv()
+    }
+    this.comment.style.display = "none"
+
   }
 }
