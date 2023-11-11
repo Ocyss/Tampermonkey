@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         力扣新版UI评论区
 // @namespace    Ocyss
-// @version      0.2
+// @version      0.3
 // @description  杀软,tm的会不会设计?
 // @author       Ocyss
 // @source       https://github.com/Ocyss/Tampermonkey
@@ -14,7 +14,7 @@
 
 (function () {
   const t = setInterval(() => {
-    const comment = document.querySelector(".mt-6.flex.flex-col.gap-3 .flex.flex-col")
+    const comment = document.querySelector('.mt-6.flex.flex-col.gap-3 .flex.flex-col:has( svg[data-icon="comment"])')
     const header = document.querySelector(".flexlayout__tabset_tabbar_inner_tab_container.flexlayout__tabset_tabbar_inner_tab_container_top")
     const layout = document.querySelector(".flexlayout__layout")
     if (!layout || !comment || !header) {
@@ -86,8 +86,8 @@ class leetcode {
 
     const commentBut = DOMApi.createElement("div", "flexlayout__tab_button flexlayout__tab_button_top flexlayout__tab_button--unselected", "", `
     <div class="flexlayout__tab_button_content">
-    <div class="relative flex items-center gap-1 overflow-hidden text-xs capitalize" style="max-width: 150px;">
-    <svg t="1694789310774" class="h-3.5 w-3.5 flex-none fill-none stroke-current stroke-1.5 text-blue-60 dark:text-blue-60" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4393"><path d="M873.909015 142.185058H150.090985c-40.867561 0-74.072455 44.516451-74.072455 99.249792v429.839173c0 54.733341 33.204894 99.249792 74.072455 99.249792h61.78786c4.743556 0 9.000594 3.040741 10.33852 7.541038l31.13719 98.398385c2.067704 6.568001 9.730372 9.487112 15.690225 6.081482l194.850695-110.682979c1.702815-0.973037 3.52726-1.459556 5.351704-1.459555H873.909015c40.867561 0 74.072455-44.516451 74.072455-99.249793V241.43485c-0.12163-54.854971-33.204894-99.249792-74.072455-99.249792zM557.915192 605.472384h-379.4845c-19.217484 0-33.326523-15.325336-33.326523-36.610524 0-21.163559 13.987409-36.610524 33.326523-36.610524h379.4845c19.217484 0 33.326523 15.446965 33.326523 36.610524 0 21.163559-13.987409 36.610524-33.326523 36.610524z m185.241953-125.886685h-559.496378c-21.650077 0-38.434969-16.298373-38.434968-37.097042s16.906521-37.097042 38.434968-37.097043h559.496378c21.650077 0 38.434969 16.298373 38.434968 37.097043s-16.906521 37.097042-38.434968 37.097042z m0-124.18387h-559.496378c-21.650077 0-38.434969-15.811854-38.434968-36.245635s16.906521-36.245635 38.434968-36.245635h559.496378c21.650077 0 38.434969 15.933484 38.434968 36.245635 0 20.312151-16.906521 36.245635-38.434968 36.245635z" p-id="4394" data-spm-anchor-id="a313x.search_index.0.i4.7ca13a810pE5J9"></path></svg>
+    <div class="relative flex items-center gap-1 overflow-hidden text-sm capitalize" style="max-width: 150px;">
+    <div class="relative text-[16px] leading-[normal] p-0.5 before:block before:h-4 before:w-4 text-sd-blue-500"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock-rotate-left" class="svg-inline--fa fa-clock-rotate-left absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z"></path></svg></div>
       <div class="relative">
         <div class="medium whitespace-nowrap font-medium">评论</div>
         <div class="normal absolute left-0 top-0 whitespace-nowrap font-normal">评论</div>
