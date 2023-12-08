@@ -4,3 +4,6 @@
 [submodule "LeetCodeRating"]
 	path = LeetCodeRating
 	url = git@github.com:Ocyss/LeetCodeRating.git
+[submodule "ali-video"]
+	path = ali-video
+	url = https://github.com/Ocyss/ali-video
